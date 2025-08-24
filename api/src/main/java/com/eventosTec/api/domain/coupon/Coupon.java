@@ -1,8 +1,11 @@
-package com.eventosTec.api.domain.event;
+package com.eventosTec.api.domain.coupon;
 
+import com.eventosTec.api.domain.event.Event;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,22 +15,21 @@ import lombok.Setter;
 import java.util.Date;
 import java.util.UUID;
 
-@Table(name = "event")
 @Entity
-@Setter
+@Table(name = "coupon")
 @Getter
-@NoArgsConstructor
+@Setter
 @AllArgsConstructor
-public class Event {
-
+@NoArgsConstructor
+public class Coupon {
     @Id
     @GeneratedValue
     private UUID id;
 
-    private String title;
-    private String description;
-    private String imgUrl;
-    private String eventUrl;
-    private Boolean remote;
-    private Date date;
+    private Integer discount;
+    private Date valid;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
 }
