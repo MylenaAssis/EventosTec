@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Table(name = "address")
 @Entity
-public class address {
+public class Address {
     @Id
     @GeneratedValue
     private UUID ui;
